@@ -125,6 +125,8 @@ func RecalculateKeyboard(equip Equip) {
 	go func() {
 		equipsDB, _ = FindAll()
 		equips = equipsDB
+	}()
+	go func() {
 		Update(&equip)
 	}()
 	for i, _ := range equipKeyboard.InlineKeyboard {
