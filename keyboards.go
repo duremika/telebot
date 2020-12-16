@@ -135,6 +135,6 @@ func CalculateKeyboard() {
 	}
 
 	dayKeyboard.InlineKeyboard = append(dayKeyboard.InlineKeyboard, cancelButton)
-	mounthKeyboard.InlineKeyboard = append(dayKeyboard.InlineKeyboard, cancelButton)
-	yearKeyboard.InlineKeyboard = append(dayKeyboard.InlineKeyboard, cancelButton)
+	mounthKeyboard.InlineKeyboard = append(mounthKeyboard.InlineKeyboard, cancelButton)
+	yearKeyboard.InlineKeyboard = append(mounthKeyboard.InlineKeyboard, cancelButton)
 }
