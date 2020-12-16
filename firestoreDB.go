@@ -28,34 +28,26 @@ func getNewClient() (client *firestore.Client) {
 	return
 }
 
-func Update(equip *Equip) (*Equip, error) {
+func Update(equip *Equip) {
 	client := getNewClient()
 	defer client.Close()
 
 	it := client.Collection(collectionName).Documents(context.Background())
 	var docName string
 	for {
-		doc, err := it.Next()
-		if err == iterator.Done {
+		if doc, err := it.Next(); err != nil {
 			break
-		}
-		if doc.Data()["Name"] == equip.Name {
+		} else if doc.Data()["Name"] == equip.Name {
 			docName = doc.Ref.ID
 		}
 	}
-	_, err := client.Collection(collectionName).Doc(docName).Set(
+
+	client.Collection(collectionName).Doc(docName).Set(
 		context.Background(),
 		map[string]interface{}{
 			"Name": equip.Name,
-			"Date": equip.Date.Format(layout),
-		},
+			"Date": equip.Date.Format(layout)},
 		firestore.MergeAll)
-
-	if err != nil {
-		log.Fatalf("Failed added a new post: %v", err)
-		return nil, err
-	}
-	return equip, nil
 }
 
 func FindAll() ([]Equip, error) {

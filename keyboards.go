@@ -109,27 +109,14 @@ var (
 	)
 )
 
-//func RecalculateKeyboard() {
-//	equipsDB, er := FindAll()
-//	if er != nil {
-//		println(er.Error())
-//	}
-//	equips = equipsDB
-//	for i, _ := range equipKeyboard.InlineKeyboard {
-//		equipKeyboard.InlineKeyboard[i][0] =
-//			tgbotapi.NewInlineKeyboardButtonData(equips[i].Name+" : "+equips[i].Date.Format(layout), strconv.Itoa(i))
-//	}
-//}
-
 func RecalculateKeyboard(equip Equip) {
 	go func() {
+		Update(&equip)
 		equipsDB, _ = FindAll()
 		equips = equipsDB
 	}()
-	go func() {
-		Update(&equip)
-	}()
-	for i, _ := range equipKeyboard.InlineKeyboard {
+
+	for i := 0; i < len(equipKeyboard.InlineKeyboard)-1; i++ {
 		equipKeyboard.InlineKeyboard[i][0] =
 			tgbotapi.NewInlineKeyboardButtonData(equips[i].Name+" : "+equips[i].Date.Format(layout), strconv.Itoa(i))
 	}
@@ -145,7 +132,7 @@ func CalculateKeyboard() {
 			),
 		)
 	}
-
+	equipKeyboard.InlineKeyboard = append(equipKeyboard.InlineKeyboard, cancelButton)
 	dayKeyboard.InlineKeyboard = append(dayKeyboard.InlineKeyboard, cancelButton)
 	mounthKeyboard.InlineKeyboard = append(mounthKeyboard.InlineKeyboard, cancelButton)
 	yearKeyboard.InlineKeyboard = append(yearKeyboard.InlineKeyboard, cancelButton)
