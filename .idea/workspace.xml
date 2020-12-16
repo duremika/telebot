@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bacc8ee-976b-4e2b-a7cf-9a6ca9c105e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/firestoreDB.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/protectionEquip.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serviceAccountKey.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/bot.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/configs.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/helpers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/log.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/passport.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/go-telegram-bot-api/telegram-bot-api/types.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
