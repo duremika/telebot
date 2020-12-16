@@ -6,6 +6,7 @@ import (
 )
 
 var (
+	equipsDB   []Equip
 	viewButton = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Посмотреть", "v"),
@@ -108,12 +109,24 @@ var (
 	)
 )
 
-func RecalculateKeyboard() {
-	equipsDB, er := FindAll()
-	if er != nil {
-		println(er.Error())
-	}
-	equips = equipsDB
+//func RecalculateKeyboard() {
+//	equipsDB, er := FindAll()
+//	if er != nil {
+//		println(er.Error())
+//	}
+//	equips = equipsDB
+//	for i, _ := range equipKeyboard.InlineKeyboard {
+//		equipKeyboard.InlineKeyboard[i][0] =
+//			tgbotapi.NewInlineKeyboardButtonData(equips[i].Name+" : "+equips[i].Date.Format(layout), strconv.Itoa(i))
+//	}
+//}
+
+func RecalculateKeyboard(equip Equip) {
+	go func() {
+		equipsDB, _ = FindAll()
+		equips = equipsDB
+		Update(&equip)
+	}()
 	for i, _ := range equipKeyboard.InlineKeyboard {
 		equipKeyboard.InlineKeyboard[i][0] =
 			tgbotapi.NewInlineKeyboardButtonData(equips[i].Name+" : "+equips[i].Date.Format(layout), strconv.Itoa(i))
@@ -121,10 +134,7 @@ func RecalculateKeyboard() {
 }
 
 func CalculateKeyboard() {
-	equipsDB, er := FindAll()
-	if er != nil {
-		println(er.Error())
-	}
+	equipsDB, _ = FindAll()
 	equips = equipsDB
 	for i, _ := range equips {
 		equipKeyboard.InlineKeyboard = append(equipKeyboard.InlineKeyboard,
