@@ -71,7 +71,7 @@ func FindAll() ([]Equip, error) {
 		y, _ := strconv.Atoi(ss[2])
 		m, _ := strconv.Atoi(ss[1])
 		d, _ := strconv.Atoi(ss[0])
-		an := []int{2020 + y, m, d}
+		an := []int{2000 + y, m, d}
 
 		equip := Equip{
 			Name: doc.Data()["Name"].(string),

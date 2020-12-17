@@ -50,7 +50,7 @@ func Handle(data string, id int64, mId int) tgbotapi.EditMessageTextConfig {
 			txt = "Выберите год"
 			markup = yearKeyboard
 		case "y":
-			equip.Date = time.Date(num, date.Month(), date.Day(), 0, 0, 0, 0, time.Local)
+			equip.Date = time.Date(2020+num, date.Month(), date.Day(), 0, 0, 0, 0, time.Local)
 			RecalculateKeyboard(equip)
 			txt = "Принято"
 			markup = viewButton

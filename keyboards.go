@@ -6,7 +6,6 @@ import (
 )
 
 var (
-	equipsDB   []Equip
 	viewButton = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Посмотреть", "v"),
@@ -111,8 +110,7 @@ var (
 
 func RecalculateKeyboard(equip Equip) {
 	Update(&equip)
-	equipsDB, _ = FindAll()
-	equips = equipsDB
+	equips, _ = FindAll()
 
 	for i := 0; i < len(equipKeyboard.InlineKeyboard)-1; i++ {
 		equipKeyboard.InlineKeyboard[i][0] =
@@ -121,8 +119,7 @@ func RecalculateKeyboard(equip Equip) {
 }
 
 func CalculateKeyboard() {
-	equipsDB, _ = FindAll()
-	equips = equipsDB
+	equips, _ = FindAll()
 	for i, _ := range equips {
 		equipKeyboard.InlineKeyboard = append(equipKeyboard.InlineKeyboard,
 			tgbotapi.NewInlineKeyboardRow(
