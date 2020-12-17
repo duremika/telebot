@@ -39,6 +39,7 @@ func main() {
 		id := update.CallbackQuery.Message.Chat.ID
 		mId := update.CallbackQuery.Message.MessageID
 		msg := Handle(data, id, mId)
+		log.Println(msg)
 		if _, err := bot.Send(msg); err != nil {
 			log.Fatal(err)
 		}

@@ -15,7 +15,7 @@ func HelloHandler(id int64) tgbotapi.Chattable {
 	return msg
 }
 
-func Handle(data string, id int64, mId int) tgbotapi.Chattable {
+func Handle(data string, id int64, mId int) tgbotapi.EditMessageTextConfig {
 	var txt string
 	var markup tgbotapi.InlineKeyboardMarkup
 
@@ -38,22 +38,19 @@ func Handle(data string, id int64, mId int) tgbotapi.Chattable {
 		markup = equipKeyboard
 	} else {
 		date := equip.Date
-		num, err := strconv.Atoi(data)
-		if err != nil {
-			return nil
-		}
+		num, _ := strconv.Atoi(data[1:])
 
 		switch string(data[0]) {
 		case "d":
-			date = time.Date(date.Year(), date.Month(), num, 0, 0, 0, 0, time.Local)
+			equip.Date = time.Date(date.Year(), date.Month(), num, 0, 0, 0, 0, time.Local)
 			txt = "Выберите месяц"
 			markup = mounthKeyboard
 		case "m":
-			date = time.Date(date.Year(), time.Month(num), date.Day(), 0, 0, 0, 0, time.Local)
+			equip.Date = time.Date(date.Year(), time.Month(num), date.Day(), 0, 0, 0, 0, time.Local)
 			txt = "Выберите год"
 			markup = yearKeyboard
 		case "y":
-			date = time.Date(num, date.Month(), date.Day(), 0, 0, 0, 0, time.Local)
+			equip.Date = time.Date(num, date.Month(), date.Day(), 0, 0, 0, 0, time.Local)
 			RecalculateKeyboard(equip)
 			txt = "Принято"
 			markup = viewButton
