@@ -24,7 +24,7 @@ func Handle(data string, id int64, mId int) tgbotapi.Chattable {
 		txt = "Выберите день"
 		markup = dayKeyboard
 	} else if data == "v" {
-		bot.DeleteMessage(tgbotapi.NewDeleteMessage(id, mId-2))
+		go bot.DeleteMessage(tgbotapi.NewDeleteMessage(id, mId-2))
 		warning := ""
 		aWeekAgo := time.Now().AddDate(0, 0, 7)
 		for _, x := range equips {
