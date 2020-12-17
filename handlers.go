@@ -19,12 +19,14 @@ func Handle(data string, id int64, mId int) tgbotapi.Chattable {
 	var txt string
 	var markup tgbotapi.InlineKeyboardMarkup
 
-	if i, err := strconv.Atoi(data); err == nil {
+	if data == "b" {
+		txt = "Чем могу помочь?"
+		markup = viewButton
+	} else if i, err := strconv.Atoi(data); err == nil {
 		equip = equips[i]
 		txt = "Выберите день"
 		markup = dayKeyboard
 	} else if data == "v" {
-		go bot.DeleteMessage(tgbotapi.NewDeleteMessage(id, mId-2))
 		warning := ""
 		aWeekAgo := time.Now().AddDate(0, 0, 7)
 		for _, x := range equips {

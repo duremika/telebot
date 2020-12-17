@@ -38,16 +38,6 @@ func main() {
 		}
 
 		data := update.CallbackQuery.Data
-
-		if update.CallbackQuery != nil {
-
-			id = update.CallbackQuery.Message.Chat.ID
-			if data == "b" {
-				bot.Send(HelloHandler(id))
-				continue
-			}
-		}
-
 		mId := update.CallbackQuery.Message.MessageID
 		msg := Handle(data, id, mId)
 		if _, err := bot.Send(msg); err != nil {
