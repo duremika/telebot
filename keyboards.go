@@ -108,8 +108,7 @@ var (
 	)
 )
 
-func RecalculateKeyboard(equip Equip) {
-	Update(&equip)
+func RecalculateKeyboard() {
 	equips, _ = FindAll()
 
 	for i := 0; i < len(equipKeyboard.InlineKeyboard)-1; i++ {

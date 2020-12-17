@@ -27,7 +27,7 @@ func Handle(data string, id int64, mId int) tgbotapi.EditMessageTextConfig {
 		txt = "Выберите день"
 		markup = dayKeyboard
 	} else if data == "v" {
-		RecalculateKeyboard(equip)
+		RecalculateKeyboard()
 		warning := ""
 		aWeekAgo := time.Now().AddDate(0, 0, 7)
 		for _, x := range equips {
@@ -52,7 +52,7 @@ func Handle(data string, id int64, mId int) tgbotapi.EditMessageTextConfig {
 			markup = yearKeyboard
 		case "y":
 			equip.Date = time.Date(2020+num, date.Month(), date.Day(), 0, 0, 0, 0, time.Local)
-
+			Update(&equip)
 			txt = "Принято"
 			markup = viewButton
 		}
