@@ -29,21 +29,26 @@ func main() {
 
 	CalculateKeyboard()
 	for update := range updates {
-		data := update.CallbackQuery.Data
+
 		var id int64
-		mId := update.CallbackQuery.Message.MessageID
-		if update.CallbackQuery != nil {
-			id = update.CallbackQuery.Message.Chat.ID
-			if data == "b" {
-				bot.Send(HelloHandler(id))
-				continue
-			}
-		} else {
+		if update.CallbackQuery == nil {
 			id = update.Message.Chat.ID
 			bot.Send(HelloHandler(id))
 			continue
 		}
 
+		data := update.CallbackQuery.Data
+
+		if update.CallbackQuery != nil {
+
+			id = update.CallbackQuery.Message.Chat.ID
+			if data == "b" {
+				bot.Send(HelloHandler(id))
+				continue
+			}
+		}
+
+		mId := update.CallbackQuery.Message.MessageID
 		msg := Handle(data, id, mId)
 		if _, err := bot.Send(msg); err != nil {
 			log.Fatal(err)
