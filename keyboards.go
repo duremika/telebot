@@ -110,11 +110,9 @@ var (
 )
 
 func RecalculateKeyboard(equip Equip) {
-	go func() {
-		Update(&equip)
-		equipsDB, _ = FindAll()
-		equips = equipsDB
-	}()
+	Update(&equip)
+	equipsDB, _ = FindAll()
+	equips = equipsDB
 
 	for i := 0; i < len(equipKeyboard.InlineKeyboard)-1; i++ {
 		equipKeyboard.InlineKeyboard[i][0] =
